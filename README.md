@@ -11,12 +11,23 @@
 - Create an Outlet comp in body comp
 - create footer
 
+- Login page
+- Install axios, JS library to make an API call from frontend
+- CORS - install cors in backend  => add middleware with confiiguration: origin, credentials
+- whenever you re making API call so pass axios => {withcredentail : true} 
+- Install redux toolkit
+- Install react redux
+- create a configureStore => Provider => createSlice => add reducer to store
+- Login and see if your data is coming properly in the store
+- NavBar is updated as soon as user logs in
+- Refactor our code to add constants file + created a components folder
 
-# Basic Structure
+
+- Basic Structure
 
 Body
     NavBar
-    Route=/ => Feed
-    Route=/login => Login
-    Route=/connections => Connections
-    Route=/profile => Profile
+    Route = / => Feed
+    Route = /login => Login
+    Route = /connections => Connections
+    Route = /profile => Profile
