@@ -25,7 +25,10 @@
 - You should not be access other routes without login
 - If token is not present, redirect user to login page
 - Logout feature
-- Profile
+- Edit Profile feature
+- Show Toast message on save of profile
+
+- See all connections Page
 
 - Basic Structure
 
