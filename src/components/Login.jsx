@@ -19,16 +19,11 @@ const Login = () => {
     try {
       const res = await axios.post(
         BASE_URL + "/login",
-        {
-          emailId,
-          password,
-        },
-        {
-          withCredentials: true,
-        }
+        { emailId, password },
+        { withCredentials: true }
       );
       dispatch(addUser(res.data));
-      return navigate("/");
+      navigate("/");
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");
     }
@@ -39,12 +34,10 @@ const Login = () => {
       const res = await axios.post(
         BASE_URL + "/signup",
         { firstName, lastName, emailId, password },
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
       dispatch(addUser(res.data.data));
-      return navigate("/profile");
+      navigate("/profile");
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");
     }
@@ -52,70 +45,68 @@ const Login = () => {
 
   return (
     <div className="flex justify-center my-14">
-      <div className="shadow-2xl">
-        <fieldset className="fieldset bg-base-300 border-base-300 rounded-box w-sm h-80 border p-4">
-          <legend className="fieldset-legend text-3xl text-center">
-            {isLoginForm ? "Login" : "SignUp"}
-          </legend>
-          {!isLoginForm && (
-            <>
-              {" "}
-              <label className="label text-lg mx-5">First Name</label>
-              <div className="flex justify-center">
-                <input
-                  type="text"
-                  value={firstName}
-                  className="input"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </div>
-              <label className="label text-lg mx-5">Last Name</label>
-              <div className="flex justify-center">
-                <input
-                  type="text"
-                  value={lastName}
-                  className="input"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </div>
-            </>
-          )}
+      <div className="shadow-2xl rounded-xl bg-base-300 p-8 w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center mb-6">
+          {isLoginForm ? "Login" : "Sign Up"}
+        </h2>
 
-          <label className="label text-lg mx-5">Email</label>
-          <div className="flex justify-center">
+        {!isLoginForm && (
+          <>
+            <label className="label text-lg">First Name</label>
             <input
-              type="email"
-              value={emailId}
-              className="input"
-              onChange={(e) => setEmailId(e.target.value)}
+              type="text"
+              placeholder="Enter first name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className="input input-bordered w-full mb-4"
             />
-          </div>
 
-          <label className="label text-lg mx-5">Password</label>
-          <div className="flex justify-center">
+            <label className="label text-lg">Last Name</label>
             <input
-              type="password"
-              value={password}
-              className="input"
-              onChange={(e) => setPassword(e.target.value)}
+              type="text"
+              placeholder="Enter last name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              className="input input-bordered w-full mb-4"
             />
-          </div>
-          <p className="text-red-500 font-bold mx-3">{error}</p>
-          <button
-            className="btn btn-neutral mt-4 py-7 text-lg rounded-2xl"
-            onClick={isLoginForm ? handleLogin : handleSignUp}
-          >
-            {isLoginForm ? "Login" : "Sign Up"}
-          </button>
-          <p
-            className="cursor-pointer m-auto text-sm py-2"
-            onClick={() => setIsLoginForm((value) => !value)}
-          >
-            {isLoginForm
-              ? "New User ? Sign Up Here"
-              : "Existing User ? Login Here"}
-          </p>
-        </fieldset>
+          </>
+        )}
+
+        <label className="label text-lg">Email</label>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={emailId}
+          onChange={(e) => setEmailId(e.target.value)}
+          className="input input-bordered w-full mb-4"
+        />
+
+        <label className="label text-lg">Password</label>
+        <input
+          type="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="input input-bordered w-full mb-4"
+        />
+
+        {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
+
+        <button
+          className="btn btn-neutral w-full text-lg rounded-xl mb-2"
+          onClick={isLoginForm ? handleLogin : handleSignUp}
+        >
+          {isLoginForm ? "Login" : "Sign Up"}
+        </button>
+
+        <p
+          className="text-sm text-center text-blue-400 hover:underline cursor-pointer"
+          onClick={() => setIsLoginForm((prev) => !prev)}
+        >
+          {isLoginForm
+            ? "New User? Sign Up Here"
+            : "Existing User? Login Here"}
+        </p>
       </div>
     </div>
   );
