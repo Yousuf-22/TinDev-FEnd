@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_URL, TINDEV_LOGO_URL } from "../utils/constants";
+import { BASE_URL } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { removeUser } from "../utils/userSlice";
@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1 items-center flex">
-        <img className="w-14" src={TINDEV_LOGO_URL} alt="" />
+        <img className="w-12" src="/logo.png" alt="" />
         <Link to="/" className="btn btn-ghost text-2xl">
           TinDev
         </Link>

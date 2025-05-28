@@ -33,8 +33,13 @@
 - New page - See all my connection request
 - Feature - Accept/reject connection request
 
+# Deployment
 
-
+- SignUp on AWS
+- Lauch Instance
+- chmod 400 "TinDev-secret.pem"
+- ssh -i "TinDev-secret.pem" ubuntu@ec2-13-61-141-164.eu-north-1.compute.amazonaws.com
+- install the correct version of node => 20.19.0
 
 - Basic Structure
 
