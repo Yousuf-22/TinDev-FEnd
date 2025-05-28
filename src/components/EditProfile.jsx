@@ -3,6 +3,7 @@ import UserCard from "./UserCard";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = ({ user }) => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const EditProfile = ({ user }) => {
   const [error, setError] = useState("");
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;

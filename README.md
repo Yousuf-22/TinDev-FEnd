@@ -29,6 +29,12 @@
 - Show Toast message on save of profile
 
 - See all connections Page
+- New page - See all my connection
+- New page - See all my connection request
+- Feature - Accept/reject connection request
+
+
+
 
 - Basic Structure
 

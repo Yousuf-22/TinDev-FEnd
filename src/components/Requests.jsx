@@ -10,7 +10,7 @@ const Requests = () => {
 
   const reviewRequest = async (status, _id) => {
     try {
-      const res = axios.post(
+      const res = await axios.post(
         BASE_URL + "/request/review/" + status + "/" + _id,
         {},
         {
@@ -76,7 +76,7 @@ const Requests = () => {
             </div>
             <div>
               <button
-                className="btn btn-primary mx-2"
+                className="btn btn-primary mx-2 my-2"
                 onClick={() => reviewRequest("accepted", request._id)}
               >
                 Accept{" "}
