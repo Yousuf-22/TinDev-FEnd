@@ -59,36 +59,61 @@
     - Enable port:80 of your instance
 
 - Back-End
-    - Allowed ec2 instance Public IP on MongoDB server
+    - cd Document
+    - cd chrome Download
+    - chmod 400 "TinDev-secret.pem"
+    - ssh -i "TinDev-secret.pem" ubuntu@ec2-13-61-141-164.eu-north-1.compute.amazonaws.com
+    - cd Tindev-BEnd
+    - npm i
+    - npm run dev (not work)
+    - Allowed ec2 instance, Public IP on MongoDB server
     - install pm2 (for 24x7 running the server)
+
     - npm install pm2 -g
-    - pm2 start npm -- start 
-    - pm2 logs
-    - pm2 list
-    - pm2 flush npm  -- npm is the name of process
+    - pm2 start npm -- start (for start the pm2)
+    - pm2 logs (To see Error)
+    - pm2 list (To see the Process)
+    - pm2 flush npm  --> npm is the name of process
     - pm2 stop npm
     - pm2 delete npm
-    - pm2 start npm --name "Tindev-BEnd" -- start 
-    - config nginx - /etc/nginx/sites-available/default
-    - restart nginx
-    - sudo systemctl restart nginx
+    - pm2 start npm --name "Tindev-BEnd" -- start (for changing the name of the process)
+    - config nginx :
+    - sudo nano /etc/nginx/sites-available/default
+
+    # Nginx Configuration
+
+        - Server Name:
+            server_name 13.61.141.164;
+
+        - ngins config :
+            location /api/ {
+                proxy_pass http://localhost:7777/;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+            }
+
+    - sudo systemctl daemon-reexec
+    - restart nginx: sudo systemctl restart nginx
     - modify the BaseUrl in front-End project to /api
 
-# Nginx Configuration
+    - if frontend change or update then:
+        - git pull
+        - npm run build
+        - sudo scp -r dist/* /var/www/html/
 
-    - Server Name:
-        server_name 13.61.141.164;
 
+# Adding a Custom Domain Name
 
-    - ngins config :
-        location /api/ {
-            proxy_pass http://localhost:7777/;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host $host;
-            proxy_cache_bypass $http_upgrade;
-        }
+    - Purchased domain name from Namecheap.com
+    - signup on cloudflare & add a new domain name
+    - change the nameservers on Namecheap and point into cloudflare
+    - wait for sometime till your nameserver are updated it make 5min for me
+    - DNS record: A -> tindev.site in 13.61.141.164
+    - Enable SSL for website
+
 
 
 Domain name = tindev.com
