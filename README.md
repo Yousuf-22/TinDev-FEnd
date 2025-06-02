@@ -114,7 +114,20 @@
     - DNS record: A -> tindev.site in 13.61.141.164
     - Enable SSL for website
 
+# Sending Email via SES
 
+    - Create a IAM user
+    - Give access AMAZONSESFULLAccess
+    - Amazon ESE: Create an Identity
+    - verify your domain name Identity
+    - verify your emailaddress Identity
+    - Install AWS SDK - v3 
+    - setup SESclient
+    - Access credentails should be created in IAM user securityCredentailsTab
+    - Add the credentails to the .env file
+    - write code for sesClient
+    - write code for sendingEmail
+    - Make the email dynamic by passing more params to the run function
 
 Domain name = tindev.com
 Front-End = http://13.61.141.164/

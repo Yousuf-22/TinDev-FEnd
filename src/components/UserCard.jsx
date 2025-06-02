@@ -10,7 +10,7 @@ const UserCard = ({ user }) => {
 
   const handleSendRequest = async (status, userId) => {
     try {
-      const res = axios.post(
+      const res = await axios.post(
         BASE_URL + "/request/send/" + status + "/" + userId,
         {},
         {
@@ -18,7 +18,9 @@ const UserCard = ({ user }) => {
         }
       );
       dispatch(removeUserFeed(userId));
-    } catch (err) {}
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
