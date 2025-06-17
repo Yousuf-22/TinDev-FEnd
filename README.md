@@ -48,9 +48,9 @@
     - npm run build
     - sudp apt update
     - sudo apt install nginx
-    - sudo systemctl start nginx
-    - sudo systemctl enable nginx
-    - cd /var/www/html/
+    - sudo systemctl start nginx => To start ngnix
+    - sudo systemctl enable nginx => Enable ngnix
+    - cd /var/www/html/ 
     - cd
     - cd TinDev-FEnd
     - copy code from dist(build files) to var/www/html/
@@ -59,7 +59,7 @@
     - Enable port:80 of your instance
 
 - Back-End
-    - cd Document
+    - cd Document 
     - cd chrome Download
     - chmod 400 "TinDev-secret.pem"
     - ssh -i "TinDev-secret.pem" ubuntu@ec2-13-61-141-164.eu-north-1.compute.amazonaws.com
@@ -95,8 +95,8 @@
                 proxy_cache_bypass $http_upgrade;
             }
 
-    - sudo systemctl daemon-reexec
     - restart nginx: sudo systemctl restart nginx
+    - sudo systemctl daemon-reexec
     - modify the BaseUrl in front-End project to /api
 
     - if frontend change or update then:
@@ -133,6 +133,14 @@ Domain name = tindev.com
 Front-End = http://13.61.141.164/
 Back-End = http://13.61.141.164:7777 => tindev.com/api
 
+# Scheduling cron Jobs in Nodejs
+
+    - Installing node-cron
+    - Learn about cron expression systax visit - crontab
+    - Schedule a job
+    - data-fns
+    - find all the unique email id who have got connection request in previous day
+    - Send Email
 
 - Basic Structure
 
