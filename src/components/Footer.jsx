@@ -13,7 +13,6 @@ const Footer = () => {
           clipRule="evenodd"
           className="fill-current"
         >
-          <path d="M22.672 15.226l-2.432.811..."></path>
         </svg>
         <p>Copyright © {new Date().getFullYear()} - All rights reserved</p>
       </aside>

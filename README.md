@@ -142,6 +142,20 @@ Back-End = http://13.61.141.164:7777 => tindev.com/api
     - find all the unique email id who have got connection request in previous day
     - Send Email
 
+# Razorpay Payment Gateway intergration 
+
+    - Sign-up and complete KYC
+    - Created a UI for premium page
+    - create an API for create order in BE   
+
+
+
+
+# Real time chat using Websocket(Socket.io)
+    - Build the UI for a chat window on /chat/:targetUserId
+    - Setup socket.io in backend
+    - npm i socket.io
+    
 - Basic Structure
 
 Body
